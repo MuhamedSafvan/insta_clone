@@ -28,8 +28,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
               title: const Text('Create a post'),
               children: [
                 SimpleDialogOption(
-                  padding: EdgeInsets.all(20),
-                  child: Text('Take a photo'),
+                  padding: const EdgeInsets.all(20),
+                  child: const Text('Take a photo'),
                   onPressed: () async {
                     Navigator.of(context).pop();
                     final file = await pickImage(ImageSource.camera);
@@ -39,8 +39,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   },
                 ),
                 SimpleDialogOption(
-                  padding: EdgeInsets.all(20),
-                  child: Text('Choose from gallery'),
+                  padding: const EdgeInsets.all(20),
+                  child: const Text('Choose from gallery'),
                   onPressed: () async {
                     Navigator.of(context).pop();
                     final file = await pickImage(ImageSource.gallery);
@@ -94,7 +94,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     return _file == null
         ? Center(
             child: IconButton(
-              icon: Icon(Icons.upload),
+              icon: const Icon(Icons.upload),
               onPressed: () => _selectImage(context),
             ),
           )
@@ -143,7 +143,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         width: MediaQuery.sizeOf(context).width * .45,
                         child: TextField(
                           controller: descriptionController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'Write a caption...',
                             border: InputBorder.none,
                           ),

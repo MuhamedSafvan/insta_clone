@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram_clone/screens/home_screen.dart';
 import 'package:instagram_clone/screens/signup_screen.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/widgets/text_input_field.dart';
@@ -13,7 +11,7 @@ import '../responsive/web_screen_layout.dart';
 import '../utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -113,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SignUpScreen()));
+                            builder: (context) => const SignUpScreen()));
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 8),
