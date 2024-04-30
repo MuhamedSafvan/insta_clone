@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:instagram_clone/resources/auth_methods.dart';
 import 'package:instagram_clone/resources/firestore_methods.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/utils/global_variables.dart';
@@ -68,6 +69,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               backgroundColor: mobileBackgroundColor,
               title: Text(userData['username'] ?? ""),
               centerTitle: false,
+              actions: [
+                IconButton(
+                    onPressed: () async {
+                      await AuthMethods().signOut();
+                    },
+                    icon: const Icon(Icons.exit_to_app))
+              ],
             ),
             body: ListView(
               children: [

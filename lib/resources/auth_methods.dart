@@ -83,9 +83,13 @@ class AuthMethods {
       } else {
         res = "Please enter all the fields";
       }
-    } catch (e) {
-      res = e.toString();
+    } on FirebaseAuthException catch (e) {
+      res = e.message!;
     }
     return res;
+  }
+
+  Future<void> signOut() async {
+    await _auth.signOut();
   }
 }

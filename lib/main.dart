@@ -14,8 +14,6 @@ import 'utils/firebase_constants.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
-    await Firebase.initializeApp();
-  } else {
     await Firebase.initializeApp(
         options: const FirebaseOptions(
             apiKey: FirebaseConstants.webAPIKey,
@@ -23,6 +21,8 @@ void main() async {
             messagingSenderId: FirebaseConstants.senderId,
             storageBucket: FirebaseConstants.storageBucket,
             projectId: FirebaseConstants.projectID));
+  } else {
+    await Firebase.initializeApp();
   }
   runApp(const MyApp());
 }

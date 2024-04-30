@@ -46,8 +46,15 @@ class _PostCardState extends State<PostCard> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).getUser;
+    final width = MediaQuery.sizeOf(context).width;
+
     return Container(
-      color: mobileBackgroundColor,
+      decoration: BoxDecoration(
+          color: mobileBackgroundColor,
+          border: Border.all(
+              color: width > webScreenSize
+                  ? secondaryColor
+                  : mobileBackgroundColor)),
       padding: const EdgeInsets.symmetric(
         vertical: 10,
       ),
@@ -128,7 +135,9 @@ class _PostCardState extends State<PostCard> {
               alignment: Alignment.center,
               children: [
                 SizedBox(
-                  height: MediaQuery.sizeOf(context).height * .35,
+                  height: width > webScreenSize
+                      ? MediaQuery.sizeOf(context).height * .9
+                      : MediaQuery.sizeOf(context).height * .35,
                   width: double.infinity,
                   child: Image.network(
                     widget.snap['postUrl'],
@@ -162,13 +171,13 @@ class _PostCardState extends State<PostCard> {
           Row(
             children: [
               LikeAnimation(
-                isAnimating: widget.snap['likes'].contains(user!.uid),
+                isAnimating: widget.snap['likes'].contains(user?.uid),
                 child: IconButton(
                   onPressed: () async {
                     await FireStoreMethods().likePost(
-                        widget.snap['postId'], user.uid, widget.snap['likes']);
+                        widget.snap['postId'], user!.uid, widget.snap['likes']);
                   },
-                  icon: widget.snap['likes'].contains(user.uid)
+                  icon: widget.snap['likes'].contains(user?.uid)
                       ? const Icon(
                           Icons.favorite,
                           color: Colors.red,
